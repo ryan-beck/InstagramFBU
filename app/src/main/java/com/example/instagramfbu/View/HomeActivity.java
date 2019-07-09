@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.example.instagramfbu.Fragments.ComposeFragment;
 import com.example.instagramfbu.Fragments.FeedFragment;
+import com.example.instagramfbu.Fragments.ProfileFragment;
 import com.example.instagramfbu.Model.Post;
 import com.example.instagramfbu.R;
 import com.parse.FindCallback;
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.action_profile:
                         // do something here
                         //TODO: profile activity
-                        fragment = new ComposeFragment();
+                        fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
