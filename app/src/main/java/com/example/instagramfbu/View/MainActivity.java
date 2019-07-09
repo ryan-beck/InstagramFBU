@@ -27,28 +27,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btnLogIn = findViewById(R.id.btnLogIn);
-        btnCreate = findViewById(R.id.btnCreate);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) { // if user is already signed in, go to home page
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        } else { // else, show the login screen
+            etUsername = findViewById(R.id.etUsername);
+            etPassword = findViewById(R.id.etPassword);
+            btnLogIn = findViewById(R.id.btnLogIn);
+            btnCreate = findViewById(R.id.btnCreate);
 
-        btnLogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String username = etUsername.getText().toString();
-                final String password = etPassword.getText().toString();
+            btnLogIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String username = etUsername.getText().toString();
+                    final String password = etPassword.getText().toString();
 
-                logIn(username, password);
-            }
-        });
+                    logIn(username, password);
+                }
+            });
 
-        btnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
-                startActivity(intent);
-            }
-        });
+            btnCreate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
 
     private void logIn(String username, String password) {
