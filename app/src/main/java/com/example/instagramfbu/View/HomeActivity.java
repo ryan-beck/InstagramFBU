@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.instagramfbu.Fragments.ComposeFragment;
+import com.example.instagramfbu.Fragments.FeedFragment;
 import com.example.instagramfbu.Model.Post;
 import com.example.instagramfbu.R;
 import com.parse.FindCallback;
@@ -45,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.action_home:
                         // do something here
                         //TODO: home activity
-                        fragment = new ComposeFragment();
+                        fragment = new FeedFragment();
                         break;
                     case R.id.action_compose:
                         // do something here

@@ -1,12 +1,13 @@
 package com.example.instagramfbu.View;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.instagramfbu.R;
 import com.parse.LogInCallback;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etUsername;
     EditText etPassword;
     Button btnLogIn;
+    Button btnCreate;
 
 
     @Override
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogIn = findViewById(R.id.btnLogIn);
+        btnCreate = findViewById(R.id.btnCreate);
 
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
                 final String password = etPassword.getText().toString();
 
                 logIn(username, password);
+            }
+        });
+
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -50,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
+                    Toast.makeText(MainActivity.this, "Username or password incorrect", Toast.LENGTH_SHORT).show();
                     Log.e("LoginActivity", "Login failed");
                     e.printStackTrace();
                 }
