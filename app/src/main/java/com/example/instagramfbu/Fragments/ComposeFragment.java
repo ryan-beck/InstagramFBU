@@ -16,10 +16,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.instagramfbu.Model.Post;
 import com.example.instagramfbu.R;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.io.File;
 
@@ -35,6 +41,7 @@ public class ComposeFragment extends Fragment {
     Button btnCapture;
     Button btnPost;
     ImageView ivPreview;
+    EditText etDescription;
     boolean picTaken = false;
 
     Bitmap takenImage;
@@ -53,6 +60,7 @@ public class ComposeFragment extends Fragment {
         btnCapture = view.findViewById(R.id.btnCapture);
         btnPost = view.findViewById(R.id.btnPost);
         ivPreview = view.findViewById(R.id.ivPreview);
+        etDescription = view.findViewById(R.id.etDescription);
 
         btnCapture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +75,7 @@ public class ComposeFragment extends Fragment {
                 if(!picTaken) {
                     Toast.makeText(getContext(), "No picture has been taken", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "Post here", Toast.LENGTH_SHORT).show();
+                    savePost(etDescription.getText().toString(), ParseUser.getCurrentUser(), photoFile);
                 }
             }
         });
@@ -125,5 +133,25 @@ public class ComposeFragment extends Fragment {
                 //Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void savePost(final String description, ParseUser parseUser, File photoFile) {
+        Post post = new Post();
+        post.setDescription(description);
+        post.setUser(parseUser);
+        post.setImage(new ParseFile(photoFile));
+        post.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(APP_TAG, "error while saving");
+                    e.printStackTrace();
+                    return;
+                }
+                Log.d(APP_TAG, "Success!");
+                etDescription.setText("");
+                ivPreview.setImageResource(R.drawable.camera_shadow_fill);
+            }
+        });
     }
 }
