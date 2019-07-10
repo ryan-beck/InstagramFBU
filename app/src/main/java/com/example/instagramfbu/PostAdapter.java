@@ -1,6 +1,8 @@
 package com.example.instagramfbu;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.instagramfbu.Model.Post;
+import com.parse.ParseException;
 
 import java.util.List;
 
@@ -41,6 +44,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         viewHolder.tvUsername.setText(post.getUser().getUsername());
         //viewHolder.tvTimestamp.setText(post);
         viewHolder.tvDescription.setText(post.getDescription());
+
+        Bitmap image = null;
+        try {
+            image = BitmapFactory.decodeFile(post.getImage().getFile().getAbsolutePath());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        // RESIZE BITMAP, see section below
+        // Load the taken image into a preview
+        viewHolder.ivPicture.setImageBitmap(image);
     }
 
     @Override
@@ -50,18 +63,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView ivPicture;
-        TextView tvUsername;
-        TextView tvTimestamp;
-        TextView tvDescription;
+        public ImageView ivPicture;
+        public TextView tvUsername;
+        public TextView tvTimestamp;
+        public TextView tvDescription;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivPicture = itemView.findViewById(R.id.ivPreview);
+            ivPicture = itemView.findViewById(R.id.ivPicture);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvTimestamp = itemView.findViewById(R.id.tvTimeStamp);
-            tvDescription = itemView.findViewById(R.id.tvDescrition);
+            tvDescription = itemView.findViewById(R.id.tvDescription);
         }
     }
 }
