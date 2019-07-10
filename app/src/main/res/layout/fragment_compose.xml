@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/ivPreview"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:srcCompat="@drawable/camera_shadow_fill" />
+
+    <EditText
+        android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Compose"
-        android:textSize="36sp" />
+        android:ems="10"
+        android:hint="Descriptilon"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btnCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take Photo"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        android:textSize="18sp" />
+
 </LinearLayout>
