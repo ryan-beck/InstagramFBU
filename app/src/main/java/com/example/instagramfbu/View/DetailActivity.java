@@ -25,6 +25,10 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvUsername;
     TextView tvDescription;
     TextView tvDate;
+    ImageView ivLike;
+    TextView tvLikeNum;
+    ImageView ivComment;
+    TextView tvCommentNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +39,22 @@ public class DetailActivity extends AppCompatActivity {
         tvUsername = findViewById(R.id.tvUsername);
         tvDescription = findViewById(R.id.tvDescription);
         tvDate = findViewById(R.id.tvDate);
+        ivLike = findViewById(R.id.ivLike);
+        tvLikeNum = findViewById(R.id.tvLikeNum);
+        ivComment = findViewById(R.id.ivComment);
+        tvCommentNum = findViewById(R.id.tvCommentNum);
+
 
         Intent intent = getIntent();
         Post post = Parcels.unwrap(intent.getParcelableExtra(Post.class.getSimpleName()));
+
         tvUsername.setText(post.getUser().getUsername());
+
         tvDescription.setText(post.getDescription());
+
         Date date = post.getCreatedAt();
         tvDate.setText(getRelativeTimeAgo(date));
+
         Bitmap image = null;
         try {
             image = BitmapFactory.decodeFile(post.getImage().getFile().getAbsolutePath());
@@ -51,6 +64,9 @@ public class DetailActivity extends AppCompatActivity {
         // RESIZE BITMAP, see section below
         // Load the taken image into a preview
         ivPicture.setImageBitmap(image);
+
+        tvLikeNum.setText(Integer.toString(post.getLikes()));
+        tvCommentNum.setText(Integer.toString(post.getCommentNum()));
 
     }
 

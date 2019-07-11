@@ -37,6 +37,15 @@ public class Post extends ParseObject {
         put(KEY_USER, user);
     }
 
+    public int getLikes() {
+        return getInt("likes");
+    }
+
+    public int getCommentNum() {
+        return getInt("commentNum");
+    }
+
+
 
     public static class Querey extends ParseQuery<Post> {
         public Querey() {
