@@ -8,9 +8,14 @@
 
 
     <FrameLayout
-        android:layout_height="match_parent"
+        android:id="@id/flContainer"
         android:layout_width="match_parent"
-        android:id="@id/flContainer"/>
+        android:layout_height="674dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <android.support.design.widget.BottomNavigationView
@@ -18,5 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_navigation" />
+        app:menu="@menu/menu_bottom_navigation"
+        android:background="@android:color/white"/>
 </android.support.constraint.ConstraintLayout>

@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
-
+        fragmentManager.beginTransaction().replace(R.id.flContainer, new FeedFragment()).commit();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment = null;
+                Fragment fragment = new FeedFragment();
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         // do something here
