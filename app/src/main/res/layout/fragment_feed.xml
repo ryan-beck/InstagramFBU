@@ -13,7 +13,7 @@
         android:id="@+id/rvPosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F7F7CBCB" />
+        android:background="@drawable/gradient" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

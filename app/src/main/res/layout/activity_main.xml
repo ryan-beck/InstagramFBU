@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainActivity">
+    tools:context=".View.MainActivity"
+    android:background="@drawable/gradient">
 
     <EditText
         android:id="@+id/etUsername"
@@ -22,7 +23,8 @@
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.974" />
+        app:layout_constraintVertical_bias="0.974"
+        android:background="@drawable/rounded_edit_text" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -38,7 +40,8 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btnLogIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded_edit_text"/>
 
     <Button
         android:id="@+id/btnLogIn"
@@ -52,7 +55,9 @@
         android:text="Log In"
         app:layout_constraintBottom_toTopOf="@+id/btnCreate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded_button_blue"
+        android:textColor="@android:color/background_light"/>
 
     <Button
         android:id="@+id/btnCreate"
@@ -66,6 +71,8 @@
         android:text="Create Account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/round_button_green"
+        android:textColor="@android:color/background_light"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.CreateAccountActivity">
+    tools:context=".View.CreateAccountActivity"
+    android:background="@drawable/gradient">
 
     <EditText
         android:id="@+id/etUsername"
@@ -20,7 +21,8 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded_edit_text"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -36,7 +38,8 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btnCreateAcct"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded_edit_text"/>
 
     <Button
         android:id="@+id/btnCreateAcct"
@@ -51,6 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Create Account" />
+        tools:text="Create Account"
+        android:background="@drawable/round_button_green"/>
 
 </android.support.constraint.ConstraintLayout>
