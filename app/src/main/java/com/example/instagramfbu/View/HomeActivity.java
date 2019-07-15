@@ -32,25 +32,18 @@ public class HomeActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = new FeedFragment();
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        // do something here
-                        //TODO: home activity
                         fragment = new FeedFragment();
                         break;
                     case R.id.action_compose:
-                        // do something here
-                        //TODO: compose activity
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
-                        // do something here
-                        //TODO: profile activity
                         fragment = new ProfileFragment();
                         break;
                 }

@@ -45,8 +45,6 @@ public class Post extends ParseObject {
         return getInt("commentNum");
     }
 
-
-
     public static class Querey extends ParseQuery<Post> {
         public Querey() {
             super(Post.class);

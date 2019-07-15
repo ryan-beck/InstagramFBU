@@ -46,7 +46,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         final Post post = mPosts.get(i);
 
         viewHolder.tvUsername.setText("User: " + post.getUser().getUsername());
-        //viewHolder.tvTimestamp.setText(post);
 
         Bitmap image = null;
         try {

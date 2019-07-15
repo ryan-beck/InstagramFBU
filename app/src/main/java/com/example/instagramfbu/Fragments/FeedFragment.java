@@ -27,8 +27,6 @@ public class FeedFragment extends Fragment {
     RecyclerView rvPosts;
     private SwipeRefreshLayout swipeContainer;
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class FeedFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         posts = new ArrayList<>();
         postAdapter = new PostAdapter(posts);
-        // TODO: link rv
         rvPosts = view.findViewById(R.id.rvPosts);
         rvPosts.setLayoutManager(new LinearLayoutManager(view.getContext()));
         rvPosts.setAdapter(postAdapter);
@@ -75,10 +72,8 @@ public class FeedFragment extends Fragment {
         postsQuerey.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> objects, ParseException e) {
-                StringBuilder sb = new StringBuilder();
                 if(e == null) {
                     for(int i = 0; i < objects.size(); i++) {
-                        //sb.append("Post[" + i + "] = " + objects.get(i).getDescription() + "\nusername: " + objects.get(i).getUser().getUsername() + "\n\n");
                         posts.add(0, objects.get(i));
                         postAdapter.notifyItemInserted(0);
                     }
